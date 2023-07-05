@@ -22,12 +22,29 @@ app.get('/' , async (req,res)=>{
     res.render('index', {urls : urls}) 
 })
 
-app.post('/shortUrl' , async(req,res)=>{
+app.post('/shortUrls' , async(req,res)=>{
      await db.create({full : req.body.url})
 
      res.redirect('/')
 })
 
+
+app.get('/:shorturl', async(req,res)=>{
+    let  shorturl =  await db.findOne({ 
+        short : req.params.shorturl
+    })
+
+    if(shorturl ==null){
+
+        
+        return res.sendStatus(404)
+    }
+
+    shorturl.clicks++
+    shorturl.save()
+
+    res.redirect(shorturl.full)
+})
 
 
 app.listen(process.env.PORT || 5000 , ()=>{
