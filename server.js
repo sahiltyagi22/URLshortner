@@ -11,6 +11,10 @@ const app = express()
 mongoose.connect("mongodb+srv://sahiltyagi119:p3vJceSKmukwIqnb@url.exayn9l.mongodb.net/url?retryWrites=true&w=majority" , {
     useNewUrlParser : true, 
     useUnifiedTopology : true
+}).then(()=>{
+    console.log("db connected");
+}).catch((err)=>{
+    console.log(err);
 })
 
 
