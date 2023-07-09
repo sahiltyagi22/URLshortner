@@ -1,3 +1,5 @@
+const env = require('dotenv').config()
+
 const express = require('express')
 const ejs = require('ejs')
 const mongoose = require('mongoose')
@@ -6,7 +8,7 @@ const db = require('./models/db')
 const app = express()
 
 
-mongoose.connect('mongodb://127.0.0.1/URL' , {
+mongoose.connect(process.env.DB , {
     useNewUrlParser : true, 
     useUnifiedTopology : true
 })
