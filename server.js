@@ -15,7 +15,7 @@ async function connection (){
     })
     console.log("db is connected");
     } catch (err){
-            console.log("error is : " err);
+            console.log("error is : " ,err);
     }
 }
 connection()
