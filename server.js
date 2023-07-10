@@ -40,7 +40,7 @@ app.get('/:shorturl', async(req,res)=>{
     try{
          let  shorturl =  await db.findOne({ 
         short : req.params.shorturl
-    })
+    }).maxTimeMS(30000)
 
     }catch(err){
         console.log(err);
