@@ -37,9 +37,15 @@ app.post('/shortUrls' , async(req,res)=>{
 
 
 app.get('/:shorturl', async(req,res)=>{
-    let  shorturl =  await db.findOne({ 
+    try{
+         let  shorturl =  await db.findOne({ 
         short : req.params.shorturl
     })
+
+    }catch(err){
+        console.log(err);
+    }
+   
 
     if(shorturl ==null){
 
