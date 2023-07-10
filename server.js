@@ -7,15 +7,17 @@ const db = require('./models/db')
 
 const app = express()
 
-
-mongoose.connect("mongodb+srv://sahiltyagi119:p3vJceSKmukwIqnb@url.exayn9l.mongodb.net/url?retryWrites=true&w=majority" , {
+try {
+    mongoose.connect("mongodb+srv://sahiltyagi119:p3vJceSKmukwIqnb@url.exayn9l.mongodb.net/url?retryWrites=true&w=majority" , {
     useNewUrlParser : true, 
     useUnifiedTopology : true
 }).then(()=>{
-    console.log("db connected");
-}).catch((err)=>{
-    console.log(err);
+    console.log('server isd runming');
 })
+} catch (error) {
+    console.log(err);
+}     
+
 
 
 
@@ -47,7 +49,7 @@ app.get('/:shorturl', async(req,res)=>{
     }
 
     shorturl.clicks++
-    shorturl.save()
+     await shorturl.save()
 
     res.redirect(shorturl.full)
 })
