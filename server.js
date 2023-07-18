@@ -9,7 +9,7 @@ const app = express()
 
 async function connection (){
     try {
-        await mongoose.connect("mongodb+srv://sahiltyagi119:p3vJceSKmukwIqnb@url.exayn9l.mongodb.net/url?retryWrites=true&w=majority" , {
+        await mongoose.connect("mongodb+srv://sahiltyagi119:@url.exayn9l.mongodb.net/url?retryWrites=true&w=majority" , {
         useNewUrlParser : true, 
         useUnifiedTopology : true
     })
